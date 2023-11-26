@@ -1,0 +1,55 @@
+//theme
+$theme-primary: #ffffff;
+$theme-secondary: #30343b;
+$theme-secondary-lighten-3: #777b83;
+$theme-editor: #4773ff;
+$theme-editorBg: #fafafa;
+$theme-primary-opacity: #ffffff91;
+$theme-editor-opacity: #4772ff32;
+$menu-elevation: #30343b;
+
+//zindexes
+$block-bg-z-index: 0;
+$block-bg-overlay-z-index: 1;
+$zone-item-list-z-index: 2;
+$zone-bg-z-index: calc($zone-item-list-z-index - 1);
+$zone-empty-container-z-index: $zone-item-list-z-index + 1;
+$column-resize-handle-z-index: 998;
+$editor-item-overlay-editor-z-index: 999;
+$editor-add-block-btns-z-index: 1050;
+$editor-add-item-btn-area-z-index: 1060;
+
+$editor-area-side-indicator-z-index: $editor-add-block-btns-z-index + 1;
+$editor-resize-hadl-z-index: $editor-area-side-indicator-z-index + 1;
+//main
+$gridWidth: 1150px;
+//style
+$gap-size-none: 0px;
+$gap-size-middle: 13px;
+$gap-size-large: 25px;
+//zone
+$zone-min-height: 30px;
+
+//items
+$item-min-height: 30px;
+
+$base-color: #c6538c;
+$menu-container-height: 80px;
+$editor-container-height: calc(100vh - $menu-container-height);
+@mixin centering-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin shadow-border {
+    box-shadow: 2px 0 0 $theme-editor, 0 2px 0 $theme-editor,
+        -2px 0 0 $theme-editor, 0 -2px 0 $theme-editor;
+}
+@mixin shadow-border-thin {
+    box-shadow: 1px 0 0 $theme-editor, 0 1px 0 $theme-editor,
+        -1px 0 0 $theme-editor, 0 -1px 0 $theme-editor;
+}
+@mixin shadow-border-opacity {
+    box-shadow: 2px 0 0 $theme-editor-opacity, 0 2px 0 $theme-editor-opacity,
+        -2px 0 0 $theme-editor-opacity, 0 -2px 0 $theme-editor-opacity;
+}

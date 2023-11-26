@@ -1,0 +1,36 @@
+@import "@/shared/constants/index.scss";
+//vuetify
+.noks-switch-row {
+    .v-selection-control {
+        min-height: 30px;
+    }
+    .v-label {
+        opacity: 1;
+        font-size: 13px;
+        font-weight: 400;
+    }
+}
+.noks-mini-text-field.v-text-field .v-field__field .v-field__input {
+    height: 37px;
+}
+.editorBg {
+    background-color: $theme-editorBg;
+}
+
+.v-redactor-container {
+    .v-field__field {
+        height: 35px;
+        align-items: center;
+        input {
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+        .v-text-field__suffix {
+            padding-top: 0;
+            padding-bottom: 3px;
+        }
+    }
+}
+.v-redactor-btn-toggle {
+    color: $theme-secondary-lighten-3;
+}

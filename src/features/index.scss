@@ -1,0 +1,258 @@
+@import "@/shared/constants/index.scss";
+
+.menu-container {
+    height: $menu-container-height;
+    background-color: #16151c;
+}
+* {
+    touch-action: none;
+}
+html {
+    overflow: hidden !important;
+}
+.main-block-area {
+    height: calc(100vh - 80px);
+    overflow: auto;
+}
+
+.empty-block-area-container {
+    @include centering-container;
+    height: $editor-container-height;
+}
+
+.container-grid ~ .block-area {
+    opacity: 0.7;
+}
+.block-area {
+    --pointer-events: auto;
+}
+.card-c:hover,
+columns-c:hover {
+    @include shadow-border;
+    &:has(.hide-controls) {
+        box-shadow: none !important;
+    }
+    &:has(.hide-controls) .noks-zone-toolbar {
+        display: none !important;
+    }
+    &:has(.item-layout.select) {
+        @include shadow-border-opacity;
+    }
+    &:has(.item-layout.select) .noks-zone-toolbar {
+        opacity: 0.2;
+    }
+}
+.cards-wrapper,
+.columns-wrapper {
+    &.show-landing-strip {
+        @include shadow-border;
+        background-color: rgba(0, 0, 0, 0.11);
+    }
+}
+.items-list {
+    &.show-landing-strip {
+        @include shadow-border;
+    }
+}
+.block-c {
+    .block-editor-controls {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        opacity: 0;
+        &.menu-is-open {
+            opacity: 1;
+        }
+    }
+
+    &:hover .block-editor-controls {
+        opacity: 0.8;
+    }
+    .block-editor-controls:hover {
+        opacity: 1;
+    }
+
+    .gear-bg {
+        width: 100%;
+        height: 100%;
+        background-color: #00000032;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+    .gear {
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        z-index: 10000000;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+}
+.card-c:hover .noks-zone-toolbar {
+    display: flex;
+}
+.columns-c:hover .noks-zone-toolbar {
+    display: flex;
+}
+.item-layout {
+    &:hover {
+        @include shadow-border;
+    }
+    --pointer-events: none;
+    &.select {
+        z-index: 1;
+        --pointer-events: auto;
+        @include shadow-border-thin;
+        .gear-bg:hover {
+            opacity: 1;
+        }
+    }
+    .item-container {
+        pointer-events: var(--pointer-events);
+    }
+    &.hide-controls {
+        .gear-bg {
+            opacity: 0 !important;
+        }
+        box-shadow: none !important;
+        .item-controls {
+            visibility: hidden !important;
+        }
+    }
+}
+
+//draggable
+//zones
+.noks-zone-toolbar {
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 5px;
+    transform: translateY(-100%);
+    padding-bottom: 5px;
+    padding-right: 100px;
+    &:hover {
+        opacity: 1 !important;
+    }
+    .v-toolbar__append {
+        margin-inline-start: auto;
+        margin-inline-end: auto;
+    }
+}
+.noks-draggable-ghost {
+    box-shadow: none !important;
+    opacity: 0.6;
+
+    .card-bg,
+    .column-bg {
+        background-color: $theme-editor !important;
+    }
+    .noks-zone-toolbar,
+    .items-list,
+    .add-item-btn {
+        opacity: 0;
+    }
+    //items
+    .item-overlay-editor {
+        visibility: visible;
+        opacity: 1;
+    }
+    .item-container,
+    .item-controls {
+        opacity: 0;
+    }
+}
+.item-controls {
+    user-select: none;
+}
+.noks-draggable-drag {
+    box-shadow: none;
+    .noks-zone-toolbar,
+    .add-item-btn {
+        opacity: 0;
+    }
+}
+.noks-draggable-fallback {
+    opacity: 1 !important;
+}
+
+.noks-draggable-chosen {
+    .item-controls {
+        visibility: hidden !important;
+    }
+}
+
+//animations
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+    opacity: 0;
+}
+//items
+.item-image {
+    .content-bg-image {
+        pointer-events: none;
+    }
+}
+//texteditor
+.ck-powered-by-balloon {
+    visibility: hidden !important;
+}
+.ck.ck-editor {
+    max-height: 150px;
+}
+.ck.ck-editor__editable_inline {
+    padding: 0 !important;
+    & > :first-child {
+        margin-top: 0 !important;
+    }
+    & > :last-child {
+        margin-bottom: 0 !important;
+    }
+}
+//side-size-indicators
+.side-size-indicator {
+    background-size: 6px;
+    background-repeat: repeat;
+    position: absolute;
+    opacity: 0.6;
+    &.top {
+        width: calc(100% - var(--p-right) - var(--p-left));
+        left: v-bind(sizeLeft);
+        top: 0;
+        height: var(--p-top);
+    }
+    &.bottom {
+        width: calc(100% - var(--p-right) - var(--p-left));
+        left: v-bind(sizeLeft);
+        bottom: 0;
+        height: var(--p-bottom);
+    }
+    &.left {
+        top: 0;
+        height: 100%;
+        left: 0;
+        width: var(--p-left);
+    }
+    &.right {
+        top: 0;
+        height: 100%;
+        right: 0;
+        width: var(--p-right);
+    }
+}
+.item-image {
+    .side-size-indicator.bottom {
+        visibility: hidden;
+    }
+    .size-handle-is-move + .side-size-indicator.bottom {
+        height: calc(100% - var(--p-top));
+        visibility: visible;
+    }
+}
+@import "@/features/vuetify.scss";
