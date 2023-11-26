@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "66ca1e909a30feef2d58889915850de2";
+const API_KEY = "";
 const options = {
     method: "GET",
     url: "https://foodprint.p.rapidapi.com/api/foodprint",
@@ -11,7 +11,7 @@ const options = {
 };
 export async function fetchArticles() {
     const response = await axios.get(
-        `https://api.edamam.com/api/recipes/v2?type=public&app_id=b4e3ef74&app_key=66ca1e909a30feef2d58889915850de2&cuisineType=Eastern%20Europe&imageSize=LARGE&random=true&field=uri&field=label&field=image&field=dietLabels&field=ingredientLines&field=ingredients&field=totalWeight&field=totalTime&field=cuisineType&field=mealType&field=dishType&field=tags`
+        `https://api.edamam.com/api/recipes/v2?type=public&app_id=b4e3ef74&app_key=&cuisineType=Eastern%20Europe&imageSize=LARGE&random=true&field=uri&field=label&field=image&field=dietLabels&field=ingredientLines&field=ingredients&field=totalWeight&field=totalTime&field=cuisineType&field=mealType&field=dishType&field=tags`
     );
     // https://api.edamam.com/api/recipes/v2?type=public&app_id=b4e3ef74&app_key=${API_KEY}&cuisineType=Eastern%20Europe&mealType=Breakfast
 
